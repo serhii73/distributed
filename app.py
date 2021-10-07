@@ -2,7 +2,7 @@ import json
 
 from flask import Flask, jsonify, request
 
-# data = requests.post("http://192.168.0.106:5000/", data=json.dumps({'k': 'v'}))
+# data = requests.post("http://localhost:8000/", data=json.dumps({'k': 'v'}))
 
 app = Flask(__name__)
 
