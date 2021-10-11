@@ -2,8 +2,8 @@ import json
 
 from flask import Flask, jsonify, request
 
-# r = requests.post("http://localhost:8000/", data=json.dumps({'k': 'v'}))
-# r = requests.get("http://localhost:8000/")
+# r = requests.post("http://localhost:8001/", data=json.dumps({'k': 'v'}))
+# r = requests.get("http://localhost:8001/")
 
 app = Flask(__name__)
 
