@@ -16,10 +16,7 @@ def main():
     if request.method == "POST":
         msg = json.loads(request.data)
         data.append(msg)
-        r = requests.post("http://localhost:8000/", data=json.dumps({'k': 'v'}))
-        import ipdb
-        ipdb.set_trace()
-        r = requests.get("http://localhost:8000/")
-        return jsonify(msg)
+        req = requests.post("http://localhost:9000/", data=json.dumps(msg))
+        return jsonify(msg) if req.ok else "Error"
     else:
         return jsonify(data)
