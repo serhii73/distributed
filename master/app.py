@@ -17,6 +17,7 @@ def main():
         msg = json.loads(request.data)
         data.append(msg)
         req = requests.post("http://localhost:9000/", data=json.dumps(msg))
-        return jsonify(msg) if req.ok else "Error"
+        req2 = requests.post("http://localhost:10000/", data=json.dumps(msg))
+        return jsonify(msg) if (req.ok and req2.ok) else "Error"
     else:
         return jsonify(data)
