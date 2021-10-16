@@ -14,7 +14,8 @@ data = []
 def main():
 
     if request.method == "POST":
-        msg = json.loads(request.data)
+        msg = request.json.get("message")
+        msg_id = request.json.get("msg_id")
         data.append(msg)
         return jsonify(msg)
     else:
