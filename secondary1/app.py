@@ -1,4 +1,4 @@
-import json
+from time import sleep
 
 from flask import Flask, jsonify, request
 
@@ -8,14 +8,26 @@ from flask import Flask, jsonify, request
 app = Flask(__name__)
 
 data = []
+start_id = 0
+
+
+def compare_ids(start_id, msg_id):
+    if msg_id == start_id:
+        return True
+    return False
 
 
 @app.route("/", methods=["GET", "POST"])
 def main():
 
     if request.method == "POST":
-        msg = json.loads(request.data)
+        global start_id
+        msg = request.json.get("message")
+        msg_id = request.json.get("msg_id")
         data.append(msg)
+        while compare_ids(start_id, msg_id) is not True:
+            sleep(1)
+        start_id += 1
         return jsonify(msg)
     else:
         return jsonify(data)
